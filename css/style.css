@@ -26,7 +26,7 @@ a:hover {
     border: 1px solid #ddd;
 }
 /* --- Float 布局 --- */
-#main-content {
+/*#main-content {
     float: left;
     width: 65%;
 }
@@ -34,4 +34,19 @@ a:hover {
 #sidebar {
     float: right;
     width: 30%;
+}*/
+/* --- Flexbox 布局 --- */
+/* 给父容器 #wrapper 添加 display: flex; */
+#wrapper {
+    /* ... 其他样式 ... */
+    display: flex;
+}
+ 
+#main-content {
+    flex: 2; /* 占据2份空间 */
+    margin-right: 20px; /* 添加右边距，防止和侧边栏贴在一起 */
+}
+ 
+#sidebar {
+    flex: 1; /* 占据1份空间 */
 }
