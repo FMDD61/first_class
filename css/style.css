@@ -50,3 +50,15 @@ a:hover {
 #sidebar {
     flex: 1; /* 占据1份空间 */
 }
+
+/* 夜间模式样式 */
+body.dark-mode {
+    background-color: #333;
+    color: #f4f4f4;
+}
+ 
+/* 确保wrapper在夜间模式下也变色 */
+body.dark-mode .container {
+    background-color: #444;
+    border-color: #555;
+}
