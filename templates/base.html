@@ -1,0 +1,27 @@
+{% extends 'bootstrap/base.html' %} <!-- 继承bootstrap/base.html模板 -->
+{% block title %}My Website{% endblock %} <!-- 定义页面标题为My Website -->
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Home</a> <!-- 导航栏品牌名称，点击后跳转到根URL -->
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/user">Personal</a></li> <!-- 导航栏链接，点击后跳转到/user URL -->
+            </ul>
+        </div>
+    </div>
+</div> <!-- /navbar-collapse -->
+{% endblock %} <!-- 结束navbar块 -->
+{% block content %}
+    <div class="container">
+        {% block page_content %}{% endblock %}
+    </div>
+{% endblock %} <!-- 结束content块 -->
