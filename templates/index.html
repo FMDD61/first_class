@@ -14,8 +14,10 @@
     </div>
     <p> </p>
     <div>
-        <a class="btn btn-success" href="{{ url_for('new_student') }}">新建学生</a>
-        <!--url_for('new_student')：生成新建学生的URL，-->
+        {% if current_user.is_authenticated and current_user.role == 'admin' %}
+            <a class="btn btn-success" href="{{ url_for('new') }}">新建学生</a>
+        {% endif %}
+        <!--url_for('new')：生成新建学生的URL，-->
             {% for stud in studs %}
                 <p>{{ stud.StudentID }} {{ stud.Name }} {{ stud.Gender }} {{ stud.StudentBirthday }} {{ stud.Age }}
                 {% if stud.major %}
@@ -23,8 +25,10 @@
                 {% else %}
                     <span class="label label-default">未分配专业</span>
                 {% endif %}
-                <a class="btn btn-primary" href="{{ url_for('edit_student', StudentID=stud.StudentID) }}">编辑</a>
-                <a class="btn btn-danger" href="{{ url_for('delete_student', StudentID=stud.StudentID) }}">删除</a>
+                {% if current_user.is_authenticated and current_user.role == 'admin' %}
+                    <a class="btn btn-primary" href="{{ url_for('edit', StudentID=stud.StudentID) }}">编辑</a>
+                    <a class="btn btn-danger" href="{{ url_for('delete', StudentID=stud.StudentID) }}">删除</a>
+                {% endif %}
                 <!-- 点击删除按钮后，弹出确认删除对话框 -->
             </p>
         {% endfor %}    

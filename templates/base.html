@@ -14,7 +14,15 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/user">Personal</a></li> <!-- 导航栏链接，点击后跳转到/user URL -->
+                {% if current_user.is_authenticated %}
+                    <!-- 已登录时显示用户问候语和登出链接 -->
+                    <li><a href="#">Ciallo, {{ current_user.username }}</a></li>
+                    <li><a href="{{ url_for('logout') }}">logout</a></li>
+                {% else %}
+                    <!-- 未登录时显示登录和注册链接 -->
+                    <li><a href="{{ url_for('register') }}">register</a></li>
+                    <li><a href="{{ url_for('login') }}">login</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -22,6 +30,17 @@
 {% endblock %} <!-- 结束navbar块 -->
 {% block content %}
     <div class="container">
+        <!-- 显示flash消息 -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category if category != 'message' else 'info' }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
         {% block page_content %}{% endblock %}
     </div>
 {% endblock %} <!-- 结束content块 -->
