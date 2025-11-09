@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block title %} 注册用户 {% endblock %}
+{% block page_content %}
+<div class="container">
+</div>
+<div class="page-header">
+    <h1>注册用户</h1>
+</div>
+ <div class="rg_left">
+    <p>新用户注册</p>    
+    <p>USER REGISTER</p>
+</div>
+<div class="rg_center">
+    {{ wtf.quick_form(form) }}
+</div>
+<div class="rg_right ">
+    <p>已有账号？<a href="{{ url_for('auth.login') }}">立即登录</a></p>
+</div>
+{% endblock %}

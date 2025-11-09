@@ -86,7 +86,7 @@ class Major(db.Model):
     # 'students' 是反向引用的名称，'major' 是在 BasicInfo 中定义的 backref 名称
     students = db.relationship('BasicInfo', backref='major', lazy='dynamic') # SQLAlchemy的关系应该引用模型类名，而不是表名。
     def __repr__(self):
-        return f'<Major {self.major_name}>'
+        return f'<Major {self.major_name}>' # 定义repr方法，返回对象的字符串表示，这里返回专业名称
 
 class BasicForm(FlaskForm):
     StudentID = StringField('请输入学生学号')

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}错误 - 学生信息管理系统{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-template text-center">
+                <h1>{{ error_code }}</h1>
+                <h2>{{ error_name }}</h2>
+                <div class="error-details">
+                    {{ error_description }}
+                </div>
+                <div class="error-actions">
+                    <a href="{{ url_for('main.index') }}" class="btn btn-primary btn-lg">
+                        <span class="glyphicon glyphicon-home"></span>
+                        返回首页
+                    </a>
+                    <a href="javascript:history.back()" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                        返回上一页
+                    </a>
+                    <a href="javascript:location.reload()" class="btn btn-info btn-lg">
+                        <span class="glyphicon glyphicon-refresh"></span>
+                        刷新页面
+                    </a>
+                </div>
+                {% if error_details %}
+                <div class="error-details-advanced" style="margin-top: 30px;">
+                    <h4>详细信息：</h4>
+                    <pre style="text-align: left; background: #f8f9fa; padding: 15px; border-radius: 5px;">{{ error_details }}</pre>
+                </div>
+                {% endif %}
+                <div class="error-contact" style="margin-top: 30px;">
+                    <p>如果问题持续存在，请联系系统管理员。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.error-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+.error-template h1 {
+    font-size: 100px;
+    color: #d9534f;
+    margin-bottom: 20px;
+}
+.error-template h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+.error-details {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #666;
+}
+.error-actions {
+    margin-top: 30px;
+}
+.error-actions .btn {
+    margin: 0 10px;
+}
+.error-contact {
+    color: #999;
+    font-size: 14px;
+}
+.error-details-advanced {
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.error-details-advanced pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 12px;
+}
+</style>
+{% endblock %}

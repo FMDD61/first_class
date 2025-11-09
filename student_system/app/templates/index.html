@@ -1,0 +1,39 @@
+{% extends 'base.html' %} <!-- 继承base.html模板 -->
+{% import 'bootstrap/wtf.html' as wtf %} <!-- 导入bootstrap/wtf.html模板，用于渲染表单 -->
+{% block title %} 学生信息管理系统 {% endblock %} <!-- 定义标题 -->
+{% block page_content %}
+<div class="container">
+</div>
+<div class="page-header">
+    <h1>学生信息列表</h1>
+    <div>
+        <a href="{{ url_for('main.index') }}" class="btn btn-primary btn-xs">所有学生</a>
+        {% for m in majors %}
+            <a href="{{ url_for('main.filter_by_major', major_id=m.id) }}" class="btn btn-default btn-xs">{{ m.major_name }}</a>
+        {% endfor %}
+    </div>
+    <p> </p>
+    <div>
+        {% if current_user.is_authenticated and current_user.role == 'admin' %}
+            <a class="btn btn-success" href="{{ url_for('main.new') }}">新建学生</a>
+        {% endif %}
+        <!--url_for('new')：生成新建学生的URL，-->
+            {% for stud in studs %}
+                <p>{{ stud.StudentID }} {{ stud.Name }} {{ stud.Gender }} {{ stud.StudentBirthday }} {{ stud.Age }}
+                {% if stud.major %}
+                    <span class="label label-info">{{ stud.major.major_name }}</span>
+                {% else %}
+                    <span class="label label-default">未分配专业</span>
+                {% endif %}
+                {% if current_user.is_authenticated and current_user.role == 'admin' %}
+                    <a class="btn btn-primary" href="{{ url_for('main.edit', StudentID=stud.StudentID) }}">编辑</a>
+                    <a class="btn btn-danger" href="{{ url_for('main.delete', StudentID=stud.StudentID) }}">删除</a>
+                {% endif %}
+                <!-- 点击删除按钮后，弹出确认删除对话框 -->
+            </p>
+        {% endfor %}    
+    </div>
+</div>
+<h4> 当前共有 {{ studs|length }} 名学生</h4>
+    <h1>Welcome to the Index Page!</h1>
+{% endblock %} <!-- 结束page_content块 -->

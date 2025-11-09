@@ -1,0 +1,64 @@
+body {
+    background-color: #f4f4f4;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+#main-title {
+    color: #007bff;
+    font-size: 36px;
+}
+ 
+.section-title {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+ 
+a:hover {
+    color: blue;
+}
+/* 布局容器 */
+#wrapper {
+    width: 960px;
+    margin: 30px auto; /* 上下30px外边距，左右自动实现水平居中 */
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+/* --- Float 布局 --- */
+/*#main-content {
+    float: left;
+    width: 65%;
+}
+ 
+#sidebar {
+    float: right;
+    width: 30%;
+}*/
+/* --- Flexbox 布局 --- */
+/* 给父容器 #wrapper 添加 display: flex; */
+#wrapper {
+    /* ... 其他样式 ... */
+    display: flex;
+}
+ 
+#main-content {
+    flex: 2; /* 占据2份空间 */
+    margin-right: 20px; /* 添加右边距，防止和侧边栏贴在一起 */
+}
+ 
+#sidebar {
+    flex: 1; /* 占据1份空间 */
+}
+
+/* 夜间模式样式 */
+body.dark-mode {
+    background-color: #333;
+    color: #f4f4f4;
+}
+ 
+/* 确保wrapper在夜间模式下也变色 */
+body.dark-mode .container {
+    background-color: #444;
+    border-color: #555;
+}

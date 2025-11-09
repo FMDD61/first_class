@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}请求实体过大 - 学生信息管理系统{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-template text-center">
+                <h1>413</h1>
+                <h2>请求实体过大</h2>
+                <div class="error-details">
+                    抱歉，您上传的文件过大。
+                </div>
+                <div class="error-actions">
+                    <a href="{{ url_for('main.index') }}" class="btn btn-primary btn-lg">
+                        <span class="glyphicon glyphicon-home"></span>
+                        返回首页
+                    </a>
+                    <a href="javascript:history.back()" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                        返回上一页
+                    </a>
+                </div>
+                <div class="error-tips" style="margin-top: 30px;">
+                    <h4>解决方案：</h4>
+                    <ul style="text-align: left; display: inline-block;">
+                        <li>减小文件大小后再上传</li>
+                        <li>压缩图片或文档</li>
+                        <li>联系管理员提高上传限制</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.error-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+.error-template h1 {
+    font-size: 100px;
+    color: #f0ad4e;
+    margin-bottom: 20px;
+}
+.error-template h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+.error-details {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #666;
+}
+.error-actions {
+    margin-top: 30px;
+}
+.error-actions .btn {
+    margin: 0 10px;
+}
+.error-tips {
+    color: #666;
+    font-size: 14px;
+}
+.error-tips ul {
+    text-align: left;
+}
+</style>
+{% endblock %}
